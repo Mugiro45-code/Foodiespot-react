@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Foodiespot-react/static/css/main.0d6acde6.css",
-    "main.js": "/Foodiespot-react/static/js/main.9a6bab34.js",
+    "main.js": "/Foodiespot-react/static/js/main.15058b23.js",
     "static/js/453.ed3810f9.chunk.js": "/Foodiespot-react/static/js/453.ed3810f9.chunk.js",
     "static/media/meal.jpg": "/Foodiespot-react/static/media/meal.fa540e588e7b99304f7e.jpg",
     "static/media/Idly.jpg": "/Foodiespot-react/static/media/Idly.c6af4990b847fdd015b9.jpg",
@@ -40,11 +40,11 @@
     "static/media/samosa.jpg": "/Foodiespot-react/static/media/samosa.3027a7728fe77b828de0.jpg",
     "index.html": "/Foodiespot-react/index.html",
     "main.0d6acde6.css.map": "/Foodiespot-react/static/css/main.0d6acde6.css.map",
-    "main.9a6bab34.js.map": "/Foodiespot-react/static/js/main.9a6bab34.js.map",
+    "main.15058b23.js.map": "/Foodiespot-react/static/js/main.15058b23.js.map",
     "453.ed3810f9.chunk.js.map": "/Foodiespot-react/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0d6acde6.css",
-    "static/js/main.9a6bab34.js"
+    "static/js/main.15058b23.js"
   ]
 }

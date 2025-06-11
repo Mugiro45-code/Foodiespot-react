@@ -4,7 +4,6 @@ import Home from "./components/Home";
 import Healthy from "./components/Healthy";
 import Breakfast from "./components/Breakfast";
 import Desserts from "./components/Desserts";
-import logo from './logo.svg';
 import './App.css';
 
 function App() {

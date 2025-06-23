@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import breakfast from "../Assets/Breakfast.jpg";
 import breadRoast from "../Assets/bread roast.jpg";
 import noodle from "../Assets/noodle.jpeg";
@@ -9,6 +11,7 @@ import idly from "../Assets/Idly.jpg";
 import breadToast from "../Assets/Bread Toast.jpg";
 import pancakesSet from "../Assets/Pancakes set.jpg";
 import vada from "../Assets/Vada.jpg";
+import Navbar from "./Navbar";
 
 const breakfastItems = [
   {
@@ -67,25 +70,14 @@ const breakfastItems = [
   },
 ];
 
-const Breakfast = () => (
+const Breakfast = ({ addToCart, cart, increaseQty, decreaseQty }) => (
   <div>
     {/* Navbar */}
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container">
-        <Link className="navbar-brand" to="/">Foodiespot</Link>
-        <div className="collapse navbar-collapse">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item"><Link className="nav-link" to="/healthy">Healthy</Link></li>
-            <li className="nav-item"><Link className="nav-link active" to="/breakfast">Breakfast</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/desserts">Desserts</Link></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <Navbar cart={cart} />
 
     {/* Hero Section */}
     <section className="bg-warning text-dark text-center py-5">
-      <div className="container">
+      <div className="container pt-2">
         <h1>Breakfast Specials</h1>
         <p className="lead">Start your day right with our delicious breakfast options!</p>
       </div>
@@ -94,21 +86,47 @@ const Breakfast = () => (
     {/* Breakfast Food Gallery */}
     <div className="container my-5">
       <div className="row row-cols-1 row-cols-md-3 g-4">
-        {breakfastItems.map((item, idx) => (
-          <div className="col" key={idx}>
-            <div className="card food-card h-100">
-              <img src={item.img} className="card-img-top" alt={item.title} />
-              <div className="card-body">
-                <h5 className="card-title">{item.title}</h5>
-                <p className="card-text">{item.desc}</p>
-                <div className="d-flex justify-content-between align-items-center mt-3">
-                  <span className="fw-bold text-primary">₹{item.price}</span>
-                  <button className="btn btn-sm btn-outline-primary">Add to Cart</button>
+        {breakfastItems.map((item, idx) => {
+          const qty = cart.find((c) => c.title === item.title)?.quantity || 0;
+          return (
+            <div className="col" key={idx}>
+              <div className="card food-card h-100">
+                <img src={item.img} className="card-img-top" alt={item.title} />
+                <div className="card-body">
+                  <h5 className="card-title">{item.title}</h5>
+                  <p className="card-text">{item.desc}</p>
+                  <div className="d-flex justify-content-between align-items-center mt-3">
+                    <span className="fw-bold text-primary">₹{item.price}</span>
+                    {qty === 0 ? (
+                      <button
+                        className="btn btn-primary btn-sm"
+                        onClick={() => addToCart(item)}
+                      >
+                        Add to Cart
+                      </button>
+                    ) : (
+                      <div className="d-flex align-items-center">
+                        <button
+                          className="btn btn-primary btn-sm"
+                          onClick={() => decreaseQty(item.title)}
+                        >
+                          <RemoveIcon />
+                        </button>
+                        <span className="mx-2">{qty}</span>
+                        <button
+                          className="btn btn-primary btn-sm"
+                          onClick={() => increaseQty(item.title)}
+                        >
+                          <AddIcon />
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
 
